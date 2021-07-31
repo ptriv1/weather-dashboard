@@ -13,12 +13,43 @@ THEN I am again presented with current and future conditions for that city */
 var apiKey = '64049e14167e493d01838b9c3f5dcbb0';
 var apiCurrentUrl;
 var apiFutureUrl;
+var apiUltraViolet;
 
-function citySubmit() {
-    document.querySelector("#search-weather").addEventListener("click", fetchWeather());
+function citySubmit(event) {
+    event.preventDefault();
+    document.querySelector("#search-weather").addEventListener("click", getCurrent());
+    document.querySelector("#search-weather").addEventListener("click", getFuture());
+}
+
+function cityStore() {
+
 }
 
 function getCurrent() {
-    fetch(apiCurrentUrl) {
-    } 
+    fetch(apiCurrentUrl)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            
+        })
 }
+
+function getFuture() {
+    fetch(apiFutureUrl)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            
+        })
+}
+
+function showUV() {
+
+}
+
+function showAllConditions() {
+    
+}
+
