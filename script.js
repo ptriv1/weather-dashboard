@@ -15,6 +15,24 @@ var apiCurrentUrl;
 var apiFutureUrl;
 var apiUltraViolet;
 
+var historySearches = document.getElementById("history");
+
+function showSavedLocations() {
+    var locations = [];
+
+    locations.forEach(function(item) {
+        var listItem = document.createElement('li');
+        var content = `<button data-location="${item}">${item}</button>`
+        listItem.innerHTML = content;
+        historySearches.appendChild(listItem);
+    })
+
+function init() {
+    showSavedLocations();
+}
+
+init();
+
 function citySubmit(event) {
     event.preventDefault();
     document.querySelector("#search-weather").addEventListener("click", getCurrent());
