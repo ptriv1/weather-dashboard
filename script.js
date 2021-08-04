@@ -105,6 +105,8 @@ function doSearch(city) {
     var cityName = document.createTextNode(data.list[0].name);
     cityName.innerHTML = data.list[0].name;
     currentSection.appendChild(paragraphCityName);
+    document.getElementById("current-section").appendChild(currentSection);
+    document.getElementById(currentSection).appendChild(paragraphCityName);
 
 }
 
