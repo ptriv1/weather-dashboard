@@ -81,7 +81,7 @@ function doSuccessfulFetch(data, location) {
 
 function doFetch(city) {
     // var data = await doFetch(url);
-    fetch(url) {
+    fetch(url) 
         .then(function (response){
             return response.json();
         })
@@ -89,7 +89,7 @@ function doFetch(city) {
             console.log(data);
         })
     }
-}
+
 
 /* function getCoordinates() {
     var latitude;
