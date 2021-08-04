@@ -18,7 +18,6 @@ var apiUltraViolet;
 var searchInput = document.getElementById("search-input");
 var searchButton = document.getElementById("search-button");
 var historySearches = document.getElementById("history");
-var data = await doFetch(url);
 
 function showSavedLocations() {
     var locations = localStorage.getItem("savedLocations");
