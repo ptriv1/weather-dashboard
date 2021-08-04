@@ -12,7 +12,7 @@ THEN I am again presented with current and future conditions for that city */
 
 var apiKey = '64049e14167e493d01838b9c3f5dcbb0';
 var apiUrl = "https://openweathermap.org";
-var url = `$(apiUrl)/data/2.5/find?q=${location}&appid=${appid}`
+var url = `$(apiUrl)/data/2.5/find?q=${location}&appid=${apiKey}`;
 var apiFutureUrl;
 var apiUltraViolet;
 var searchInput = document.getElementById("search-input");
@@ -52,7 +52,7 @@ function searchCity(event) {
 
 function setEventListeners() {
     historySearches.addEventListener('click', updateContentPane);
-    searchInput.addEventListener("click", searchCity)
+    searchInput.addEventListener("click", searchCity);
 }
 
 function setLocalStorage(location) {
