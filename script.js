@@ -18,6 +18,7 @@ var apiUltraViolet;
 var searchInput = document.getElementById("search-input");
 var searchButton = document.getElementById("search-button");
 var historySearches = document.getElementById("history");
+var data = await doFetch(url);
 
 function showSavedLocations() {
     var locations = localStorage.getItem("savedLocations");
@@ -78,9 +79,11 @@ function doSuccessfulFetch(data, location) {
 }
 
 function displayConditions() {
+    
     var currentCard = document.createElement('div');
     var cityName = document.createElement('p');
-    var cityNameContent = 
+    var cityNameContent = data.current.temp;
+    console.log(cityNameContent);
 }
 
 function doFetch() {
