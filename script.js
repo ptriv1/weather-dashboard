@@ -77,32 +77,28 @@ function doSuccessfulFetch(data, location) {
     setLocalStorage(location);
 }
 
-async function displayConditions() {
-    var data = await doFetch(url);
-    var currentCard = document.createElement('div');
-    var cityName = document.createElement('p');
-    var cityNameContent = data.current.temp;
-    console.log(cityNameContent);
-}
+
 
 function doFetch(city) {
-    var data = await doFetch(url);
+    // var data = await doFetch(url);
     fetch(url) {
         .then(function (response){
-
+            return response.json();
         })
-        .then(data)
+        .then(function (data) {
+            console.log(data);
+        })
     }
 }
 
-function getCoordinates() {
+/* function getCoordinates() {
     var latitude;
     var longitude;
     fetch() {
         .then(response)
         .then(data)
     }
-}
+} */
 
 function doFetch() {
     fetch(url).then(function(response) {
