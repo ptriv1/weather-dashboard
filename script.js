@@ -103,10 +103,10 @@ function doSearch(city) {
     var currentSection = document.createElement('div');
     var paragraphCityName = document.createElement("p");
     var cityName = document.createTextNode(data.list[0].name);
-    cityName.innerHTML = data.list[0].name;
+    paragraphCityName.innerHTML = cityName;
     currentSection.appendChild(paragraphCityName);
     document.getElementById("current-section").appendChild(currentSection);
-    document.getElementById(currentSection).appendChild(paragraphCityName);
+    document.getElementById("current-section").appendChild(paragraphCityName);
 
 }
 
