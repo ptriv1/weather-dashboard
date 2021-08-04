@@ -48,18 +48,6 @@ function searchCity(event) {
         window.alert("Please enter a location!");
     }
 
-    fetch(url).then(function(response) {
-        if (!response.ok) {
-            window.alert('fetch failed');
-        }
-        return response.json()
-
-    }).then(function(data) {
-        if (data.count === 0) {
-            window.alert("This is not a valid location!");
-        }
-        doSuccessfulFetch(data, location);
-    })
 }
 
 function setEventListeners() {
@@ -87,11 +75,28 @@ function setLocalStorage(location) {
 function doSuccessfulFetch(data, location) {
     createHistoryButton(location);
     setLocalStorage(location);
-    displayConditions();
 }
 
 function displayConditions() {
+    var currentCard = document.createElement('div');
+    var cityName = document.createElement('p');
+    var cityNameContent = 
+}
 
+function doFetch() {
+    fetch(url).then(function(response) {
+        if (!response.ok) {
+            window.alert('fetch failed');
+        }
+        return response.json()
+
+    }).then(function(data) {
+        if (data.count === 0) {
+            window.alert("This is not a valid location!");
+            console.log(current.temp);
+        }
+        doSuccessfulFetch(data, location);
+    })
 }
 
 function init() {
