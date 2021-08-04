@@ -46,7 +46,7 @@ function updateContentPane(event) {
 function searchCity(event) {
     event.preventDefault()
     var location = searchInput.value;
-    if (location) {
+    if (location === "") {
         window.alert("Please enter a location!");
     }
     doSearch(city);
