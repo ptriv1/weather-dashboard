@@ -10,6 +10,8 @@ THEN I am presented with a 5-day forecast that displays the date, an icon repres
 WHEN I click on a city in the search history
 THEN I am again presented with current and future conditions for that city */
 
+// var url = `${apiUrl}/data/2.5/find?q=${city}&appid=${apiKey}`;
+
 var apiKey = '9add3f1517db1996021516ac1dcd2b3d';
 var apiUrl = "https://openweathermap.org";
 var apiFutureUrl;
@@ -80,7 +82,7 @@ function doSuccessfulFetch(data, location) {
 
 
 function doSearch(city) {
-    var url = `${apiUrl}/data/2.5/find?q=${city}&appid=${apiKey}`;
+    var url = `https://api.openweathermap.org/data/2.5/find?q=austin&appid=9add3f1517db1996021516ac1dcd2b3d`;
     // var data = await doFetch(url);
     console.log(url);
     fetch(url) 
@@ -89,6 +91,7 @@ function doSearch(city) {
         })
         .then(function (data) {
             console.log(data);
+            console.log(main.temp);
         })
         
     }
