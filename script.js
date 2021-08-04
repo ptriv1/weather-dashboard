@@ -85,6 +85,25 @@ async function displayConditions() {
     console.log(cityNameContent);
 }
 
+function doFetch(city) {
+    var data = await doFetch(url);
+    fetch(url) {
+        .then(function (response){
+
+        })
+        .then(data)
+    }
+}
+
+function getCoordinates() {
+    var latitude;
+    var longitude;
+    fetch() {
+        .then(response)
+        .then(data)
+    }
+}
+
 function doFetch() {
     fetch(url).then(function(response) {
         if (!response.ok) {
@@ -95,7 +114,7 @@ function doFetch() {
     }).then(function(data) {
         if (data.count === 0) {
             window.alert("This is not a valid location!");
-            console.log(current.temp);
+        console.log(data.current.temp);
         }
         doSuccessfulFetch(data, location);
     })
