@@ -12,9 +12,9 @@ THEN I am again presented with current and future conditions for that city */
 
 var apiKey = '9add3f1517db1996021516ac1dcd2b3d';
 var apiUrl = "https://openweathermap.org";
-var url = `$(apiUrl)/data/2.5/find?q=${location}&appid=${apiKey}`;
 var apiFutureUrl;
 var apiUltraViolet;
+var city;
 var searchInput = document.getElementById("search-input");
 var searchButton = document.getElementById("search-weather");
 var historySearches = document.getElementById("history");
@@ -80,7 +80,7 @@ function doSuccessfulFetch(data, location) {
 
 
 function doSearch(city) {
-    var url = `$(apiUrl)/data/2.5/find?q=${location}&appid=${apiKey}`;
+    var url = `${apiUrl}/data/2.5/find?q=${city}&appid=${apiKey}`;
     // var data = await doFetch(url);
     console.log(url);
     fetch(url) 
