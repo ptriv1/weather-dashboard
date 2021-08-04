@@ -93,16 +93,17 @@ function doSearch(city) {
             console.log(data);
             console.log(data.list[0].main.temp);
         })
-        
+    
+    createCurrentSection();
     }
 
-async function createCurrentSection() {
+ async function createCurrentSection() {
     var data = await doSearch(url);
     var section = document.createElement("div");
     var cityName = document.createElement("p");
     cityName.innerHTML = data.list[0].name;
-}
 
+}
 
 /* function getCoordinates() {
     var latitude;
