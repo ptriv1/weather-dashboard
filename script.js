@@ -91,10 +91,17 @@ function doSearch(city) {
         })
         .then(function (data) {
             console.log(data);
-            console.log(main.temp);
+            console.log(data.list[0].main.temp);
         })
         
     }
+
+async function createCurrentSection() {
+    var data = await doSearch(url);
+    var section = document.createElement("div");
+    var cityName = document.createElement("p");
+    cityName.innerHTML = data.list[0].name;
+}
 
 
 /* function getCoordinates() {
