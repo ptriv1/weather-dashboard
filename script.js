@@ -10,7 +10,7 @@ THEN I am presented with a 5-day forecast that displays the date, an icon repres
 WHEN I click on a city in the search history
 THEN I am again presented with current and future conditions for that city */
 
-var apiKey = '64049e14167e493d01838b9c3f5dcbb0';
+var apiKey = '9add3f1517db1996021516ac1dcd2b3d';
 var apiUrl = "https://openweathermap.org";
 var url = `$(apiUrl)/data/2.5/find?q=${location}&appid=${apiKey}`;
 var apiFutureUrl;
@@ -47,7 +47,7 @@ function searchCity(event) {
     if (location) {
         window.alert("Please enter a location!");
     }
-    doSearch();
+    doSearch(city);
 }
 
 function setEventListeners() {
