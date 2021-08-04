@@ -89,14 +89,13 @@ function doSearch(city) {
         .then(function (response){
             return response.json();
         })
-        .then(function (data) {
+            .then(function (data) {
             console.log(data);
             console.log(data.list);
             console.log(data.list.main);
             console.log(data.list[0].main.temp);
+            createCurrentSection(data);
         })
-    
-    createCurrentSection(data);
     }
 
  async function createCurrentSection(data) {
