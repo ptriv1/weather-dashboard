@@ -78,8 +78,8 @@ function doSuccessfulFetch(data, location) {
     setLocalStorage(location);
 }
 
-function displayConditions() {
-    
+async function displayConditions() {
+    var data = await doFetch(url);
     var currentCard = document.createElement('div');
     var cityName = document.createElement('p');
     var cityNameContent = data.current.temp;
