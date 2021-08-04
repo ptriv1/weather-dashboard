@@ -91,14 +91,16 @@ function doSearch(city) {
         })
         .then(function (data) {
             console.log(data);
+            console.log(data.list);
+            console.log(data.list.main);
             console.log(data.list[0].main.temp);
         })
     
-    createCurrentSection();
+    createCurrentSection(data);
     }
 
- async function createCurrentSection() {
-    var data = await doSearch(url);
+ async function createCurrentSection(data) {
+    var url = `https://api.openweathermap.org/data/2.5/find?q=austin&appid=9add3f1517db1996021516ac1dcd2b3d`;
     var section = document.createElement("div");
     var cityName = document.createElement("p");
     cityName.innerHTML = data.list[0].name;
