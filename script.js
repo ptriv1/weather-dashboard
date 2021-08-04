@@ -16,7 +16,7 @@ var url = `$(apiUrl)/data/2.5/find?q=${location}&appid=${apiKey}`;
 var apiFutureUrl;
 var apiUltraViolet;
 var searchInput = document.getElementById("search-input");
-var searchButton = document.getElementById("search-button");
+var searchButton = document.getElementById("search-weather");
 var historySearches = document.getElementById("history");
 
 function showSavedLocations() {
@@ -47,12 +47,12 @@ function searchCity(event) {
     if (location) {
         window.alert("Please enter a location!");
     }
-
+    doSearch();
 }
 
 function setEventListeners() {
     historySearches.addEventListener('click', updateContentPane);
-    searchInput.addEventListener("click", searchCity);
+    searchButton.addEventListener("click", searchCity);
 }
 
 function setLocalStorage(location) {
@@ -79,8 +79,10 @@ function doSuccessfulFetch(data, location) {
 
 
 
-function doFetch(city) {
+function doSearch(city) {
+    var url = `$(apiUrl)/data/2.5/find?q=${location}&appid=${apiKey}`;
     // var data = await doFetch(url);
+    console.log(url);
     fetch(url) 
         .then(function (response){
             return response.json();
@@ -88,6 +90,7 @@ function doFetch(city) {
         .then(function (data) {
             console.log(data);
         })
+        
     }
 
 
