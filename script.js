@@ -82,8 +82,7 @@ function doSuccessfulFetch(data, location) {
 
 
 function doSearch(location) {
-    var url = `https://api.openweathermap.org/data/2.5/find?q=${location}&appid=${apiKey}`;
-    // var data = await doFetch(url);
+    var url = `https://api.openweathermap.org/data/2.5/find?q=${location}&units=imperial&appid=${apiKey}`;
     console.log(url);
     fetch(url) 
         .then(function (response){
@@ -158,14 +157,17 @@ async function getUVIndex(lat, lon) {
 
 }
 
-/* function getCoordinates() {
-    var latitude;
-    var longitude;
-    fetch() {
-        .then(response)
-        .then(data)
-    }
-} */
+async function doForecast(data) {
+    var forecastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+    fetch(forecastUrl) 
+        .then(function (response){
+            return response.json();
+        })
+            .then(function (data) {
+            console.log(data);
+            var forecastSection;
+        })
+}
 
 function doFetch() {
     fetch(url).then(function(response) {
