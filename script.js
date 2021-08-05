@@ -115,6 +115,39 @@ function doSearch(city) {
     iconNode.src = `https://openweathermap.org/img/w/${data.list[0].weather[0].icon}.png`;
     iconSection.appendChild(iconNode);
     document.getElementById("current-section").appendChild(iconSection);
+    var tempSection = document.createElement("div");
+    var temperature = data.list[0].main.temp;
+    var tempNode = document.createTextNode(temperature);
+    tempSection.appendChild(tempNode);
+    document.getElementById("current-section").appendChild(tempSection);
+    var humiditySection = document.createElement("div");
+    var humidityPercent = data.list[0].main.humidity;
+    var humidityNode = document.createTextNode(humidityPercent);
+    humiditySection.appendChild(humidityNode);
+    document.getElementById("current-section").appendChild(humiditySection);
+    var windSection = document.createElement("div");
+    var windSpeed = data.list[0].wind.speed;
+    var windNode = document.createTextNode(windSpeed);
+    windSection.appendChild(windNode);
+    document.getElementById("current-section").appendChild(windSection);
+    var uvSection = document.createElement("div");
+}
+
+async function getUVIndex(data) {
+    var uvUrl = `https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={9add3f1517db1996021516ac1dcd2b3d}`;
+    fetch(uvUrl) 
+        .then(function (response){
+            return response.json();
+        })
+            .then(function (data) {
+            console.log(data);
+            var uvSection = document.createElement("div");
+            var uvIndex = data.current.uvi;
+            var uvNode = document.createTextNode(uvIndex);
+            uvSection.appendChild(uvNode);
+            document.getElementById("current-section").appendChild(uvSection);
+        })
+
 }
 
 /* function getCoordinates() {
