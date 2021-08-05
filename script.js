@@ -102,7 +102,7 @@ var lat;
 var lon;
 
 async function createCurrentSection(data) {
-    var url = `https://api.openweathermap.org/data/2.5/find?q=${location}&appid=${apiKey}`;
+    var url = `https://api.openweathermap.org/data/2.5/find?q=${location}&units=imperial&appid=${apiKey}`;
     var citySection = document.createElement("div");
     var cityName = data.list[0].name;
     var cityNode = document.createTextNode(cityName);
@@ -110,6 +110,7 @@ async function createCurrentSection(data) {
     document.getElementById("current-section").appendChild(citySection);
     var dateSection = document.createElement("div");
     var dateCurrent = data.list[0].dt;
+    dateCurrent = moment(dateCurrent*1000).format("MMM Do");     
     var dateNode = document.createTextNode(dateCurrent);
     dateSection.appendChild(dateNode);
     document.getElementById("current-section").appendChild(dateSection);
