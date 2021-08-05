@@ -130,7 +130,7 @@ function doSearch(city) {
     var windNode = document.createTextNode(windSpeed);
     windSection.appendChild(windNode);
     document.getElementById("current-section").appendChild(windSection);
-    var uvSection = document.createElement("div");
+    get uvIndex(data);
 }
 
 async function getUVIndex(data) {
