@@ -139,10 +139,9 @@ async function createCurrentSection(data) {
 }
 
 
-async function getUVIndex(data) {
-    var part;
-    var apiKey;
-    var uvUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=${part}&appid=${apiKey}`;
+async function getUVIndex(lat, lon) {
+    var apiKey = 'fa1c6a221cbd23e57c0e663f1b9e184a';
+    var uvUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}`;
     fetch(uvUrl) 
         .then(function (response){
             return response.json();
