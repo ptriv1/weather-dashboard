@@ -12,7 +12,7 @@ THEN I am again presented with current and future conditions for that city */
 
 // var url = `${apiUrl}/data/2.5/find?q=${city}&appid=${apiKey}`;
 
-var apiKey = '41c9931b3edf3c30f671cfd96e9669bf';
+var apiKey = 'fa1c6a221cbd23e57c0e663f1b9e184a';
 var apiUrl = "https://openweathermap.org";
 
 var city;
@@ -81,7 +81,7 @@ function doSuccessfulFetch(data, location) {
 
 
 function doSearch(city) {
-    var url = `https://api.openweathermap.org/data/2.5/find?q=austin&appid=41c9931b3edf3c30f671cfd96e9669bf`;
+    var url = `https://api.openweathermap.org/data/2.5/find?q=${city}appid=${apiKey}`;
     // var data = await doFetch(url);
     console.log(url);
     fetch(url) 
@@ -101,7 +101,7 @@ var lat;
 var lon;
 
 async function createCurrentSection(data) {
-    var url = `https://api.openweathermap.org/data/2.5/find?q=austin&appid=41c9931b3edf3c30f671cfd96e9669bf`;
+    var url = `https://api.openweathermap.org/data/2.5/find?q=${city}&appid=${apiKey}`;
     var citySection = document.createElement("div");
     var cityName = data.list[0].name;
     var cityNode = document.createTextNode(cityName);
