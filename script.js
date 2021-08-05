@@ -12,10 +12,9 @@ THEN I am again presented with current and future conditions for that city */
 
 // var url = `${apiUrl}/data/2.5/find?q=${city}&appid=${apiKey}`;
 
-var apiKey = '9add3f1517db1996021516ac1dcd2b3d';
+var apiKey = '41c9931b3edf3c30f671cfd96e9669bf';
 var apiUrl = "https://openweathermap.org";
-var apiFutureUrl;
-var apiUltraViolet;
+
 var city;
 var searchInput = document.getElementById("search-input");
 var searchButton = document.getElementById("search-weather");
@@ -82,7 +81,7 @@ function doSuccessfulFetch(data, location) {
 
 
 function doSearch(city) {
-    var url = `https://api.openweathermap.org/data/2.5/find?q=austin&appid=9add3f1517db1996021516ac1dcd2b3d`;
+    var url = `https://api.openweathermap.org/data/2.5/find?q=austin&appid=41c9931b3edf3c30f671cfd96e9669bf`;
     // var data = await doFetch(url);
     console.log(url);
     fetch(url) 
@@ -101,8 +100,8 @@ function doSearch(city) {
 var lat;
 var lon;
 
- async function createCurrentSection(data) {
-    var url = `https://api.openweathermap.org/data/2.5/find?q=austin&appid=9add3f1517db1996021516ac1dcd2b3d`;
+async function createCurrentSection(data) {
+    var url = `https://api.openweathermap.org/data/2.5/find?q=austin&appid=41c9931b3edf3c30f671cfd96e9669bf`;
     var citySection = document.createElement("div");
     var cityName = data.list[0].name;
     var cityNode = document.createTextNode(cityName);
@@ -135,9 +134,8 @@ var lon;
     document.getElementById("current-section").appendChild(windSection);
     var lat = data.list[0].coord.lat;
     var lon = data.list[0].coord.lon;
-    getUVIndex(data, lat, lon);
+    getUVIndex(lat, lon);
 }
-
 
 
 async function getUVIndex(data) {
