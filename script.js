@@ -15,7 +15,6 @@ THEN I am again presented with current and future conditions for that city */
 var apiKey = 'fa1c6a221cbd23e57c0e663f1b9e184a';
 var apiUrl = "https://openweathermap.org";
 
-var city = document.getElementById("search-input").innerText;
 var searchInput = document.getElementById("search-input");
 var searchButton = document.getElementById("search-weather");
 var historySearches = document.getElementById("history");
@@ -41,6 +40,8 @@ function updateContentPane(event) {
     var buttonClicked = event.target;
     var location = buttonClicked.getAttribute("data-location");
 }
+
+var city = document.getElementById("search-input").innerText;
 
 function searchCity(event) {
     event.preventDefault()
