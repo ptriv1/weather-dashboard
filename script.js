@@ -111,10 +111,9 @@ function doSearch(city) {
     dateSection.appendChild(dateNode);
     document.getElementById("current-section").appendChild(dateSection);
     var iconSection = document.createElement("div");
-    var iconVariable = data.list[0].weather[0].icon;
-    var iconNode = document.createElement("a");
-    iconNode = "https://openweathermap.org/img/w/${data.list[0].weather[0].icon}.png";
-    iconSection.appendChild(iconVariable);
+    var iconNode = document.createElement("img");
+    iconNode.src = `https://openweathermap.org/img/w/${data.list[0].weather[0].icon}.png`;
+    iconSection.appendChild(iconNode);
     document.getElementById("current-section").appendChild(iconSection);
 }
 
