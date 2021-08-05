@@ -41,7 +41,7 @@ function updateContentPane(event) {
     var location = buttonClicked.getAttribute("data-location");
 }
 
-var city = document.getElementById("search-input").innerText;
+// var city = document.getElementById("search-input").innerText;
 
 function searchCity(event) {
     event.preventDefault()
@@ -49,7 +49,7 @@ function searchCity(event) {
     if (location === "") {
         window.alert("Please enter a location!");
     }
-    doSearch(city);
+    doSearch(location);
 }
 
 function setEventListeners() {
@@ -81,8 +81,8 @@ function doSuccessfulFetch(data, location) {
 
 
 
-function doSearch(city) {
-    var url = `https://api.openweathermap.org/data/2.5/find?q=${city}&appid=${apiKey}`;
+function doSearch(location) {
+    var url = `https://api.openweathermap.org/data/2.5/find?q=${location}&appid=${apiKey}`;
     // var data = await doFetch(url);
     console.log(url);
     fetch(url) 
@@ -102,7 +102,7 @@ var lat;
 var lon;
 
 async function createCurrentSection(data) {
-    var url = `https://api.openweathermap.org/data/2.5/find?q=${city}&appid=${apiKey}`;
+    var url = `https://api.openweathermap.org/data/2.5/find?q=${location}&appid=${apiKey}`;
     var citySection = document.createElement("div");
     var cityName = data.list[0].name;
     var cityNode = document.createTextNode(cityName);
