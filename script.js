@@ -105,9 +105,17 @@ function doSearch(city) {
     var cityNode = document.createTextNode(cityName);
     citySection.appendChild(cityNode);
     document.getElementById("current-section").appendChild(citySection);
+    var dateSection = document.createElement("div");
     var dateCurrent = data.list[0].dt;
     var dateNode = document.createTextNode(dateCurrent);
-    citySection.appendChild(dateNode);
+    dateSection.appendChild(dateNode);
+    document.getElementById("current-section").appendChild(dateSection);
+    var iconSection = document.createElement("div");
+    var iconVariable = data.list[0].weather[0].icon;
+    var iconNode = document.createElement("a");
+    iconNode = "https://openweathermap.org/img/w/${data.list[0].weather[0].icon}.png";
+    iconSection.appendChild(iconVariable);
+    document.getElementById("current-section").appendChild(iconSection);
 }
 
 /* function getCoordinates() {
