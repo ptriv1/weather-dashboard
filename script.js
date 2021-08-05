@@ -98,6 +98,9 @@ function doSearch(city) {
         })
     }
 
+var lat;
+var lon;
+
  async function createCurrentSection(data) {
     var url = `https://api.openweathermap.org/data/2.5/find?q=austin&appid=9add3f1517db1996021516ac1dcd2b3d`;
     var citySection = document.createElement("div");
@@ -130,11 +133,17 @@ function doSearch(city) {
     var windNode = document.createTextNode(windSpeed);
     windSection.appendChild(windNode);
     document.getElementById("current-section").appendChild(windSection);
-    get uvIndex(data);
+    var lat = data.list[0].coord.lat;
+    var lon = data.list[0].coord.lon;
+    getUVIndex(data, lat, lon);
 }
 
+
+
 async function getUVIndex(data) {
-    var uvUrl = `https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={9add3f1517db1996021516ac1dcd2b3d}`;
+    var part;
+    var apiKey;
+    var uvUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=${part}&appid=${apiKey}`;
     fetch(uvUrl) 
         .then(function (response){
             return response.json();
