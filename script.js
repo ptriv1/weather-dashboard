@@ -15,7 +15,7 @@ THEN I am again presented with current and future conditions for that city */
 var apiKey = 'fa1c6a221cbd23e57c0e663f1b9e184a';
 var apiUrl = "https://openweathermap.org";
 
-var city;
+var city = document.getElementById("search-input").innerText;
 var searchInput = document.getElementById("search-input");
 var searchButton = document.getElementById("search-weather");
 var historySearches = document.getElementById("history");
@@ -81,7 +81,7 @@ function doSuccessfulFetch(data, location) {
 
 
 function doSearch(city) {
-    var url = `https://api.openweathermap.org/data/2.5/find?q=${city}appid=${apiKey}`;
+    var url = `https://api.openweathermap.org/data/2.5/find?q=${city}&appid=${apiKey}`;
     // var data = await doFetch(url);
     console.log(url);
     fetch(url) 
