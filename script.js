@@ -180,11 +180,14 @@ function createForecast(data) {
     for (var i = 1; i < data.list.length; i++) {
         var daySection = document.createElement("div");
         var citySection = document.createElement("div");
-        var cityName = data.list[0].name;
+        var cityName = data.city.name;
         var cityNode = document.createTextNode(cityName);
         citySection.appendChild(cityNode);
+        console.log(citySection);
         daySection.appendChild(citySection);
+        console.log(daySection);
         document.getElementById("forecast").appendChild(daySection);
+        console.log(i);
         console.log(data.city.name); 
         console.log(data.list[i].dt);
         console.log(data.list[i].main.temp);
