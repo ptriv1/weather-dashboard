@@ -38,7 +38,7 @@ function createHistoryButton(location) {
 
 function updateContentPane(event) {
     var buttonClicked = event.target;
-    var myLocation = buttonClicked.getAttribute("data-location");
+    buttonClicked.getAttribute("data-location");
 }
 
 // var city = document.getElementById("search-input").innerText;
@@ -161,6 +161,7 @@ async function getUVIndex(lat, lon) {
 
 async function doForecast(data, myLocation) {
     var forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${myLocation}&units=imperial&appid=${apiKey}`;
+    console.log(forecastUrl);
     fetch(forecastUrl) 
         .then(function (response){
             return response.json();
@@ -171,9 +172,9 @@ async function doForecast(data, myLocation) {
         createForecast(data);
 }
 
-function createForecast(data, myLocation) {
+function createForecast(data) {
     document.getElementById("forecast").innerHTML = "";
-    var url = `https://api.openweathermap.org/data/2.5/forecast?q=${myLocation}&units=imperial&appid=${apiKey}`;
+
 
 }
 
