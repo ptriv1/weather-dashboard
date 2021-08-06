@@ -183,11 +183,13 @@ function createForecast(data) {
         var cityName = data.city.name;
         var cityNode = document.createTextNode(cityName);
         citySection.appendChild(cityNode);
-        console.log(citySection);
+        var dateSection = document.createElement("div");
+        var dateForecastUse = moment((data.list[i].dt)*1000).format("MMM Do");  
+        var dateNode = document.createTextNode(dateForecastUse);
+        dateSection.appendChild(dateNode);
         daySection.appendChild(citySection);
-        console.log(daySection);
+        daySection.appendChild(dateSection);
         document.getElementById("forecast").appendChild(daySection);
-        console.log(i);
         console.log(data.city.name); 
         console.log(data.list[i].dt);
         console.log(data.list[i].main.temp);
@@ -195,7 +197,7 @@ function createForecast(data) {
         console.log(data.list[0].wind.speed);
         var dayForecast = moment((data.list[i].dt)*1000).format("MMM Do"); 
         var iconForecastNode = document.createElement("img");
-        iconForecastNode.src = `https://openweathermap.org/img/w/${data.list[i].weather[i].icon}.png`;
+        iconForecastNode.src = `https://openweathermap.org/img/w/${data.list[0].weather[0].icon}.png`;
     }
 
 }
