@@ -177,7 +177,6 @@ async function doForecast(data, myLocation) {
 function createForecast(data) {
     document.getElementById("forecast").innerHTML = "";
     console.log(data.list.length); 
-    var dayForecast = moment((data.list[i].dt)*1000).format("MMM Do"); 
     for (var i = 0; i < data.list.length; i++) {
         console.log(data.list.name);
         console.log(data.list[i].dt);
@@ -191,6 +190,7 @@ function createForecast(data) {
 
     }
     var iconForecastNode = document.createElement("img");
+    var iconForecasts;
     iconForecasts.src = `https://openweathermap.org/img/w/${data.list[i].weather[i].icon}.png`;
 
 }
