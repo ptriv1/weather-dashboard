@@ -168,47 +168,13 @@ async function doForecast(data) {
         })
             .then(function (data) {
             console.log(data);
-            var forecastSection;
         })
+        createForecast(data);
 }
 
 function createForecast(data) {
     document.getElementById("forecast").innerHTML = "";
-    var url = `https://api.openweathermap.org/data/2.5/find?q=${location}&units=imperial&appid=${apiKey}`;
-    var citySection = document.createElement("div");
-    var cityName = data.list[0].name;
-    var cityNode = document.createTextNode(cityName);
-    citySection.appendChild(cityNode);
-    document.getElementById("current-section").appendChild(citySection);
-    var dateSection = document.createElement("div");
-    var dateCurrent = data.list[0].dt;
-    dateCurrent = moment(dateCurrent*1000).format("MMM Do");     
-    var dateNode = document.createTextNode(dateCurrent);
-    dateSection.appendChild(dateNode);
-    document.getElementById("current-section").appendChild(dateSection);
-    var iconSection = document.createElement("div");
-    var iconNode = document.createElement("img");
-    iconNode.src = `https://openweathermap.org/img/w/${data.list[0].weather[0].icon}.png`;
-    iconSection.appendChild(iconNode);
-    document.getElementById("current-section").appendChild(iconSection);
-    var tempSection = document.createElement("div");
-    var temperature = data.list[0].main.temp;
-    var tempNode = document.createTextNode(temperature);
-    tempSection.appendChild(tempNode);
-    document.getElementById("current-section").appendChild(tempSection);
-    var humiditySection = document.createElement("div");
-    var humidityPercent = data.list[0].main.humidity;
-    var humidityNode = document.createTextNode(humidityPercent);
-    humiditySection.appendChild(humidityNode);
-    document.getElementById("current-section").appendChild(humiditySection);
-    var windSection = document.createElement("div");
-    var windSpeed = data.list[0].wind.speed;
-    var windNode = document.createTextNode(windSpeed);
-    windSection.appendChild(windNode);
-    document.getElementById("current-section").appendChild(windSection);
-    var lat = data.list[0].coord.lat;
-    var lon = data.list[0].coord.lon;
-    getUVIndex(lat, lon);
+    var url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}`;
 
 }
 
