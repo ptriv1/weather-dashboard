@@ -185,17 +185,13 @@ function createForecast(data) {
         console.log(data.list[0].wind.speed);
         var dayForecast = moment((data.list[i].dt)*1000).format("MMM Do"); 
         var iconForecastNode = document.createElement("img");
-        var iconForecasts;
-        iconForecasts.src = `https://openweathermap.org/img/w/${data.list[i].weather[i].icon}.png`;
-
+        iconForecastNode.src = `https://openweathermap.org/img/w/${data.list[i].weather[i].icon}.png`;
+        console.log(data.list[i].weather[i].icon);
         if (dayForecast) {
             continue;
         }
 
     }
-    var iconForecastNode = document.createElement("img");
-    var iconForecasts;
-    iconForecasts.src = `https://openweathermap.org/img/w/${data.list[i].weather[i].icon}.png`;
 
 }
 
