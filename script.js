@@ -94,6 +94,7 @@ function doSearch(location) {
             console.log(data.list.main);
             console.log(data.list[0].main.temp);
             createCurrentSection(data);
+            doForecast(data);
         })
     }
 
