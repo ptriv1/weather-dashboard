@@ -169,17 +169,29 @@ async function doForecast(data, myLocation) {
         })
             .then(function (data) {
             console.log(data);
+            createForecast(data);
         })
-        createForecast(data);
+        
 }
 
 function createForecast(data) {
     document.getElementById("forecast").innerHTML = "";
-    console.log(data.list.length);
-    for (var i = 0; i < data.list[i].length; i++) {
+    console.log(data.list.length); 
+    var dayForecast = moment((data.list[i].dt)*1000).format("MMM Do"); 
+    for (var i = 0; i < data.list.length; i++) {
+        console.log(data.list.name);
         console.log(data.list[i].dt);
+        console.log(data.list[i].main.temp);
+        console.log(data.list[i].main.humidity);
+        console.log(data.list[0].wind.speed);
+        var dayForecast = moment((data.list[i].dt)*1000).format("MMM Do"); 
+        if (dayForecast) {
+            continue;
+        }
 
     }
+    var iconForecastNode = document.createElement("img");
+    iconForecasts.src = `https://openweathermap.org/img/w/${data.list[i].weather[i].icon}.png`;
 
 }
 
