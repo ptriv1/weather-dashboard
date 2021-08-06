@@ -160,15 +160,24 @@ async function getUVIndex(lat, lon) {
 
 }
 
-async function doForecast(lat, lon) {
-    var forecastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude={part}&appid=${apiKey}`;
-    console.log(forecastUrl);
-    fetch(forecastUrl) 
+async function doForecast(lat, lon) { 
+    var limit = 5;
+    var forecastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=minutely,hourly&appid=${apiKey}`;
+    var cityForecastUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${myLocation}&limit=${limit}&appid=${apiKey}`;
+    
+    fetch(cityForecastUrl) 
         .then(function (response){
             return response.json();
         })
             .then(function (data) {
             console.log(data);
+            fetch (forecastUrl) 
+                .then (function (response) {
+                    return response.json();
+                })
+                    .then(function (data) {
+                        console.log(data);
+                    })
             createForecast(data);
         })
         
