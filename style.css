@@ -10,6 +10,13 @@ header {
     text-align: center;
 }
 
+#current-section {
+    border: 1px solid black;
+}
+
+#forecast {
+    border: 1px solid black;
+}
 
 .right-container {
     position: relative;
