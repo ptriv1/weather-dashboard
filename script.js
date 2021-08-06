@@ -38,19 +38,19 @@ function createHistoryButton(location) {
 
 function updateContentPane(event) {
     var buttonClicked = event.target;
-    var location = buttonClicked.getAttribute("data-location");
+    var myLocation = buttonClicked.getAttribute("data-location");
 }
 
 // var city = document.getElementById("search-input").innerText;
 
 function searchCity(event) {
     event.preventDefault()
-    var location = searchInput.value;
-    if (location === "") {
+    var myLocation = searchInput.value;
+    if (myLocation === "") {
         window.alert("Please enter a location!");
     }
-    createHistoryButton(location);
-    doSearch(location);
+    createHistoryButton(myLocation);
+    doSearch(myLocation);
 }
 
 function setEventListeners() {
@@ -75,15 +75,15 @@ function setLocalStorage(location) {
     }
 }
 
-function doSuccessfulFetch(data, location) {
-    createHistoryButton(location);
-    setLocalStorage(location);
+function doSuccessfulFetch (data, myLocation) {
+    createHistoryButton(myLocation);
+    setLocalStorage(myLocation);
 }
 
 
 
-function doSearch(location) {
-    var url = `https://api.openweathermap.org/data/2.5/find?q=${location}&units=imperial&appid=${apiKey}`;
+function doSearch(myLocation) {
+    var url = `https://api.openweathermap.org/data/2.5/find?q=${myLocation}&units=imperial&appid=${apiKey}`;
     console.log(url);
     fetch(url) 
         .then(function (response){
@@ -104,7 +104,7 @@ var lon;
 
 async function createCurrentSection(data) {
     document.getElementById("current-section").innerHTML = "";
-    var url = `https://api.openweathermap.org/data/2.5/find?q=${location}&units=imperial&appid=${apiKey}`;
+    var url = `https://api.openweathermap.org/data/2.5/find?q=${myLocation}&units=imperial&appid=${apiKey}`;
     var citySection = document.createElement("div");
     var cityName = data.list[0].name;
     var cityNode = document.createTextNode(cityName);
@@ -160,8 +160,8 @@ async function getUVIndex(lat, lon) {
 
 }
 
-async function doForecast(data) {
-    var forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=imperial&appid=${apiKey}`;
+async function doForecast(data, location) {
+    var forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${myLocation}&units=imperial&appid=${apiKey}`;
     fetch(forecastUrl) 
         .then(function (response){
             return response.json();
@@ -174,7 +174,7 @@ async function doForecast(data) {
 
 function createForecast(data) {
     document.getElementById("forecast").innerHTML = "";
-    var url = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=imperial&appid=${apiKey}`;
+    var url = `https://api.openweathermap.org/data/2.5/forecast?q=${myLocation}&units=imperial&appid=${apiKey}`;
 
 }
 
