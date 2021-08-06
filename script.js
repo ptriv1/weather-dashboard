@@ -160,8 +160,8 @@ async function getUVIndex(lat, lon) {
 
 }
 
-async function doForecast(data, myLocation) {
-    var forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${myLocation}&cnt=6&units=imperial&appid=${apiKey}`;
+async function doForecast(lat, lon) {
+    var forecastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude={part}&appid=${apiKey}`;
     console.log(forecastUrl);
     fetch(forecastUrl) 
         .then(function (response){
