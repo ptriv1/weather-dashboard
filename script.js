@@ -161,7 +161,7 @@ async function getUVIndex(lat, lon) {
 }
 
 async function doForecast(data, myLocation) {
-    var forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=$&units=imperial&appid=${apiKey}`;
+    var forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${myLocation}&units=imperial&appid=${apiKey}`;
     console.log(forecastUrl);
     fetch(forecastUrl) 
         .then(function (response){
@@ -175,7 +175,11 @@ async function doForecast(data, myLocation) {
 
 function createForecast(data) {
     document.getElementById("forecast").innerHTML = "";
+    console.log(data.list.length);
+    for (var i = 0; i < data.list[i].length; i++) {
+        console.log(data.list[i].dt);
 
+    }
 
 }
 
