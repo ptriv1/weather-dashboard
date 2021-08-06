@@ -49,6 +49,7 @@ function searchCity(event) {
     if (location === "") {
         window.alert("Please enter a location!");
     }
+    createHistoryButton(location);
     doSearch(location);
 }
 
