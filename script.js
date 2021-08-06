@@ -161,7 +161,7 @@ async function getUVIndex(lat, lon) {
 }
 
 async function doForecast(data, myLocation) {
-    var forecastUrl = `https://openweathermap.org/forecast16?q=${myLocation}&cnt=5&units=imperial&appid=${apiKey}`;
+    var forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${myLocation}&cnt=6&units=imperial&appid=${apiKey}`;
     console.log(forecastUrl);
     fetch(forecastUrl) 
         .then(function (response){
@@ -177,20 +177,22 @@ async function doForecast(data, myLocation) {
 function createForecast(data) {
     document.getElementById("forecast").innerHTML = "";
     console.log(data.list.length); 
-    for (var i = 0; i < data.list.length; i++) {
-        console.log(data.list.name);
+    for (var i = 1; i < data.list.length; i++) {
+        var daySection = document.createElement("div");
+        var citySection = document.createElement("div");
+        var cityName = data.list[0].name;
+        var cityNode = document.createTextNode(cityName);
+        citySection.appendChild(cityNode);
+        daySection.appendChild(citySection);
+        document.getElementById("forecast").appendChild(daySection);
+        console.log(data.city.name); 
         console.log(data.list[i].dt);
         console.log(data.list[i].main.temp);
         console.log(data.list[i].main.humidity);
         console.log(data.list[0].wind.speed);
         var dayForecast = moment((data.list[i].dt)*1000).format("MMM Do"); 
-        /* var iconForecastNode = document.createElement("img");
+        var iconForecastNode = document.createElement("img");
         iconForecastNode.src = `https://openweathermap.org/img/w/${data.list[i].weather[i].icon}.png`;
-        console.log(data.list[i].weather[i].icon); */
-        if (dayForecast) {
-            continue;
-        }
-
     }
 
 }

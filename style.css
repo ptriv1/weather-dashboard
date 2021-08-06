@@ -12,6 +12,7 @@ header {
 
 #current-section {
     border: 1px solid black;
+    text-align: center;
 }
 
 #forecast {
