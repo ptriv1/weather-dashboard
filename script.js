@@ -43,10 +43,10 @@ function updateContentPane(event) {
 
 // var city = document.getElementById("search-input").innerText;
 
-
+var myLocation = searchInput.value;
 function searchCity(event) {
     event.preventDefault()
-    var myLocation = searchInput.value;
+    // var myLocation = searchInput.value;
     if (myLocation === "") {
         window.alert("Please enter a location!");
     }
