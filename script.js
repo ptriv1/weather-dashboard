@@ -43,10 +43,9 @@ function updateContentPane(event) {
 
 // var city = document.getElementById("search-input").innerText;
 
-var myLocation;
+var myLocation = searchInput.value;
 function searchCity(event) {
-    event.preventDefault()
-    var myLocation = searchInput.value;
+    event.preventDefault();
     if (myLocation === "") {
         window.alert("Please enter a location!");
     }
@@ -161,6 +160,8 @@ async function getUVIndex(lat, lon) {
 }
 
 async function doForecast(lat, lon) { 
+    console.log(lat);
+    console.log(lon);
     var limit = 5;
     var forecastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=minutely,hourly&appid=${apiKey}`;
     var cityForecastUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${myLocation}&limit=${limit}&appid=${apiKey}`;
