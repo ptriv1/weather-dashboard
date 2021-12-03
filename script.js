@@ -43,10 +43,10 @@ function updateContentPane(event) {
 
 // var city = document.getElementById("search-input").innerText;
 
-var myLocation = searchInput.value;
+var myLocation;
 function searchCity(event) {
     event.preventDefault()
-    // var myLocation = searchInput.value;
+    myLocation = searchInput.value;
     if (myLocation === "") {
         window.alert("Please enter a location!");
     }
@@ -83,7 +83,7 @@ function doSuccessfulFetch (data, myLocation) {
 
 
 
-function doSearch(myLocation) {
+function doSearch(myLocation) { 
     var url = `https://api.openweathermap.org/data/2.5/find?q=${myLocation}&units=imperial&appid=${apiKey}`;
     console.log(url);
     fetch(url) 
@@ -161,8 +161,6 @@ async function getUVIndex(lat, lon) {
 }
 
 async function doForecast(lat, lon) { 
-    console.log(lat);
-    console.log(lon);
     var limit = 5;
     var forecastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=minutely,hourly&appid=${apiKey}`;
     var cityForecastUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${myLocation}&limit=${limit}&appid=${apiKey}`;
