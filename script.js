@@ -171,19 +171,27 @@ async function doForecast(lat, lon) {
 function createForecast(data) {
     document.getElementById("forecast").innerHTML = "";
     for (var i = 0; i < data[index].length; i++) {
-        var daySection = document.createElement("div");
-        var citySection = document.createElement("div");
-        var cityName = data[index].city.name;
-        var cityNode = document.createTextNode(cityName);
-        citySection.appendChild(cityNode);
-        var dateSection = document.createElement("div");
-        var dateForecastUse = moment((data.list[i].dt)*1000).format("MMM Do");  
-        var dateNode = document.createTextNode(dateForecastUse);
-        dateSection.appendChild(dateNode);
-        daySection.appendChild(citySection);
-        daySection.appendChild(dateSection);
-        document.getElementById("forecast").appendChild(daySection);
-        var dayForecast = moment((data.list[i].dt)*1000).format("MMM Do"); 
+        var cityName = data.list[index].name;
+        var dateForecasted = data.list[0].dt;
+        dateForecasted = moment(dateCurrent*1000).format("MMM Do");
+        var iconNode = document.createElement("img");
+        iconNode.src = `https://openweathermap.org/img/w/${data.list[0].weather[0].icon}.png`;
+        var temperatureForecast = data.list[0].main.temp;
+        var humidityPercentForecasted = data.list[0].main.humidity;
+        var windSpeedForecasted = data.list[0].wind.speed;
+        var templateForecast = `
+        <p class="date">City: ${cityName}</p>
+        <p class="date">Date: ${dateForecasted}</p>
+        <p class="temp">Temp: ${temperatureForecast}</p>
+        <p class="humidity">Humidity: ${humidityPercentForecasted}</p>
+        <p class="windSpeed">Windspeed: ${windSpeedForecasted}</p>
+        `;
+        document.getElementById("forecast").innerHTML = template;
+        var forecastSection = document.createElement("div");
+        var lat = data.list[0].coord.lat;
+        var lon = data.list[0].coord.lon;
+        getUVIndex(lat, lon);
+        document.getElementById("current-section").appendChild(forecastSection);
         var iconForecastNode = document.createElement("img");
         iconForecastNode.src = `https://openweathermap.org/img/w/${data.list[0].weather[0].icon}.png`;
     }
