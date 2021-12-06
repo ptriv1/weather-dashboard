@@ -10,6 +10,35 @@ header {
     text-align: center;
 }
 
+.container {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    width: auto;
+}
+
+.left-container {
+    border: 1px solid black;
+    display: inline;
+    width: 20%;
+}
+
+.right-container {
+    border: 1px solid black;
+    display: inline;
+    width: 80%;
+}
+
+.search-title {
+    text-align: center;
+    padding: 20px;
+}
+
+.forecast-title {
+    text-align: center;
+    padding: 20px;
+}
+
 #current-section {
     text-align: left;
 }

@@ -170,7 +170,6 @@ async function doForecast(lat, lon) {
             return response.json();
         })
             .then(function (data) {
-            console.log(data);
             fetch (forecastUrl) 
                 .then (function (response) {
                     return response.json();
@@ -185,7 +184,6 @@ async function doForecast(lat, lon) {
 
 function createForecast(data) {
     document.getElementById("forecast").innerHTML = "";
-    console.log(data.list.length); 
     for (var i = 1; i < data.list.length; i++) {
         var daySection = document.createElement("div");
         var citySection = document.createElement("div");
@@ -199,11 +197,6 @@ function createForecast(data) {
         daySection.appendChild(citySection);
         daySection.appendChild(dateSection);
         document.getElementById("forecast").appendChild(daySection);
-        console.log(data.city.name); 
-        console.log(data.list[i].dt);
-        console.log(data.list[i].main.temp);
-        console.log(data.list[i].main.humidity);
-        console.log(data.list[0].wind.speed);
         var dayForecast = moment((data.list[i].dt)*1000).format("MMM Do"); 
         var iconForecastNode = document.createElement("img");
         iconForecastNode.src = `https://openweathermap.org/img/w/${data.list[0].weather[0].icon}.png`;
