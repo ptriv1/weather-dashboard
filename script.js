@@ -93,7 +93,6 @@ function doSearch(myLocation) {
             .then(function (data) {
             console.log(data);
             console.log(data.list);
-            console.log(data.list.main);
             console.log(data.list[0].main.temp);
             createCurrentSection(data);
             doForecast(data, myLocation);
@@ -107,19 +106,24 @@ async function createCurrentSection(data) {
     document.getElementById("current-section").innerHTML = "";
     var currentSection = document.createElement("div");
     var cityName = data.list[0].name;
+    console.log(data.list[0].name);
     var cityNode = document.createTextNode(cityName);
     var dateCurrent = data.list[0].dt;
-    dateCurrent = moment(dateCurrent*1000).format("MMM Do");     
+    dateCurrent = moment(dateCurrent*1000).format("MMM Do"); 
+    currentSection.appendChild(dateCurrent);    
     var dateNode = document.createTextNode(dateCurrent);
     var iconSection = document.createElement("div");
     var iconNode = document.createElement("img");
     iconNode.src = `https://openweathermap.org/img/w/${data.list[0].weather[0].icon}.png`;
     var temperature = data.list[0].main.temp;
     var tempNode = document.createTextNode(temperature);
+    currentSection.appendChild(tempNode);
     var humidityPercent = data.list[0].main.humidity;
     var humidityNode = document.createTextNode(humidityPercent);
+    currentSection.appendChild(humidityNode);
     var windSpeed = data.list[0].wind.speed;
     var windNode = document.createTextNode(windSpeed);
+    currentSection.appendChild(humidityNode);
     var lat = data.list[0].coord.lat;
     var lon = data.list[0].coord.lon;
     getUVIndex(lat, lon);
@@ -168,10 +172,10 @@ async function doForecast(lat, lon) {
 
 function createForecast(data) {
     document.getElementById("forecast").innerHTML = "";
-    for (var i = 1; i < data.list.length; i++) {
+    for (var i = 0; i < data[index].length; i++) {
         var daySection = document.createElement("div");
         var citySection = document.createElement("div");
-        var cityName = data.city.name;
+        var cityName = data[index].city.name;
         var cityNode = document.createTextNode(cityName);
         citySection.appendChild(cityNode);
         var dateSection = document.createElement("div");
