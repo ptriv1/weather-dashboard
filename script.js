@@ -104,6 +104,14 @@ var lon;
 
 async function createCurrentSection(data) {
     var cityName = data.list[0].name;
+    var dateCurrent = data.list[0].dt;
+    dateCurrent = moment(dateCurrent*1000).format("MMM Do");
+    var iconSection = document.createElement("div");
+    var iconNode = document.createElement("img");
+    iconNode.src = `https://openweathermap.org/img/w/${data.list[0].weather[0].icon}.png`;
+    var temperature = data.list[0].main.temp;
+    var humidityPercent = data.list[0].main.humidity;
+    var windSpeed = data.list[0].wind.speed;
     var template = `
     <p class="date">City: ${cityName}</p>
     <p class="date">Date: ${dateCurrent}</p>
@@ -113,15 +121,6 @@ async function createCurrentSection(data) {
     `;
     document.getElementById("current-section").innerHTML = template;
     var currentSection = document.createElement("div");
-    var cityName = data.list[0].name;
-    var dateCurrent = data.list[0].dt;
-    dateCurrent = moment(dateCurrent*1000).format("MMM Do");
-    var iconSection = document.createElement("div");
-    var iconNode = document.createElement("img");
-    iconNode.src = `https://openweathermap.org/img/w/${data.list[0].weather[0].icon}.png`;
-    var temperature = data.list[0].main.temp;
-    var humidityPercent = data.list[0].main.humidity;
-    var windSpeed = data.list[0].wind.speed;
     var lat = data.list[0].coord.lat;
     var lon = data.list[0].coord.lon;
     getUVIndex(lat, lon);
