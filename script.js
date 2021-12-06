@@ -109,9 +109,10 @@ async function createCurrentSection(data) {
     console.log(data.list[0].name);
     var cityNode = document.createTextNode(cityName);
     var dateCurrent = data.list[0].dt;
-    dateCurrent = moment(dateCurrent*1000).format("MMM Do"); 
-    currentSection.appendChild(dateCurrent);    
-    var dateNode = document.createTextNode(dateCurrent);
+    dateCurrent = moment(dateCurrent*1000).format("MMM Do");
+    var dateElement = document.createElement("p");
+    dateElement.textContent = dateCurrent; 
+    currentSection.appendChild(dateElement);  
     var iconSection = document.createElement("div");
     var iconNode = document.createElement("img");
     iconNode.src = `https://openweathermap.org/img/w/${data.list[0].weather[0].icon}.png`;
@@ -127,6 +128,7 @@ async function createCurrentSection(data) {
     var lat = data.list[0].coord.lat;
     var lon = data.list[0].coord.lon;
     getUVIndex(lat, lon);
+    document.getElementById("current-section").appendChild(currentSection);
 }
 
 
