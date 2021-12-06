@@ -103,6 +103,7 @@ var lat;
 var lon;
 
 async function createCurrentSection(data) {
+    var cityName = data.list[0].name;
     var template = `
     <p class="date">City: ${cityName}</p>
     <p class="date">Date: ${dateCurrent}</p>
